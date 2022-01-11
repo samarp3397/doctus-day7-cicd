@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="6a0b8b15-8782-4b25-b692-eae7614ba576" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="doctus-day7-cicd-sessFlow" doc:id="1795d958-0d08-4c19-8cb6-57c2150705b5" >
+		<http:listener doc:name="Listener" doc:id="d045c435-07f0-400c-9088-1a036cfd5df5" config-ref="HTTP_Listener_config" path="/demo"/>
+		<set-payload value="Hello" doc:name="Set Payload" doc:id="43a96f96-c2be-4fe6-ab5b-9eb79c043f8e" />
+		<logger level="INFO" doc:name="Logger" doc:id="41887375-8e11-44e5-b3a2-43e5a7202e1f" message="#[payload]"/>
+	</flow>
+</mule>
